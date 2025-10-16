@@ -1,7 +1,6 @@
 sap.ui.define([
-   "sap/ui/core/UIComponent",
-   "sap/ui/model/json/JSONModel"
-], function (UIComponent, JSONModel) {
+   "sap/ui/core/UIComponent"
+], function (UIComponent) {
    "use strict";
    return UIComponent.extend("jsp.prototype.Component", {
       metadata : {
@@ -11,8 +10,8 @@ sap.ui.define([
          // Kald init-funktionen fra forælderen
          UIComponent.prototype.init.apply(this, arguments);
 
-         // Opret routeren (god praksis)
-         // this.getRouter().initialize();
+         // Initialiser routeren
+         this.getRouter().initialize();
       }
    });
 });

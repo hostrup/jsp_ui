@@ -9,7 +9,8 @@
         "rootView": {
             "viewName": "jsp.prototype.view.App",
             "type": "XML",
-            "async": true
+            "async": true,
+            "id": "appView"
         },
         "dependencies": {
             "minUI5Version": "1.60.0",
@@ -22,6 +23,29 @@
             "planModel": {
                 "type": "sap.ui.model.json.JSONModel",
                 "uri": "data/planData.json"
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "jsp.prototype.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "main",
+                    "target": "main"
+                }
+            ],
+            "targets": {
+                "main": {
+                    "viewId": "main",
+                    "viewName": "Main"
+                }
             }
         }
     }
