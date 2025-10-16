@@ -18,7 +18,7 @@
                         <Toolbar>
                             <VBox>
                                 <Title text="Jernbanearbejde ved bro" level="H1"/>
-                                <Text text="2025-00002-002"/>
+                                <Text text="2025-0002-002"/>
                             </VBox>
                             <ToolbarSpacer/>
                             <ObjectStatus text="Godkendt" state="Success" class="sapUiSmallMarginEnd"/>
@@ -32,7 +32,6 @@
                             class="sapUiNoContentPadding">
                             <CustomListItem>
                                 <VBox class="sapUiSmallMargin sapBackgroundColorNeutral sapUiTinyMarginBottom">
-                                    
                                     <HBox alignItems="Center" class="sapUiSmallMarginBegin sapUiTinyMarginTopBottom">
                                         <Label text="Strækning" design="Bold" class="sapUiMediumMarginEnd"/>
                                         <Title text="{fra}" level="H4"/>
