@@ -4,72 +4,71 @@
     xmlns="sap.m"
     xmlns:core="sap.ui.core"
     displayBlock="true">
-    <Page showHeader="false" class="sapUiResponsiveContentPadding">
+    <Page showHeader="false" backgroundDesign="Solid">
         <content>
             <FlexBox
                 height="100%"
                 width="100%"
-                alignItems="Center"
-                justifyContent="Center">
+                alignItems="Start"
+                justifyContent="Center"
+                class="sapUiSmallMarginTopBottom">
                 
-                <Panel width="80rem" class="sapUiMediumMargin">
+                <Panel width="80rem">
                     <headerToolbar>
                         <Toolbar>
                             <VBox>
                                 <Title text="Jernbanearbejde ved bro" level="H1"/>
-                                <Text text="2025-00002-002" class="sapUiTinyMarginTop"/>
+                                <Text text="2025-00002-002"/>
                             </VBox>
                             <ToolbarSpacer/>
-                            <ObjectStatus title="Status" text="Godkendt" state="Success" class="sapUiSmallMarginEnd"/>
-                            <ObjectStatus title="Gyldig fra" text="01.07.2025" state="None" icon="sap-icon://calendar"/>
+                            <ObjectStatus text="Godkendt" state="Success" class="sapUiSmallMarginEnd"/>
+                            <ObjectStatus text="01.07.2025" state="None" icon="sap-icon://calendar"/>
                         </Toolbar>
                     </headerToolbar>
                     <content>
                         <List
                             items="{planModel>/straekninger}"
-                            noDataText="Ingen strækninger tilføjet"
                             showSeparators="None"
                             class="sapUiNoContentPadding">
                             <CustomListItem>
-                                <Panel backgroundDesign="Solid" class="sapUiSmallMargin">
-                                    <VBox class="sapUiSmallMargin">
-                                        <HBox alignItems="Center" class="sapUiTinyMarginBottom">
-                                            <Label text="Strækning" design="Bold" class="sapUiMediumMarginEnd"/>
-                                            <Title text="{planModel>fra}" level="H4"/>
-                                            <core:Icon src="sap-icon://arrow-right" class="sapUiTinyMarginBeginEnd"/>
-                                            <Title text="{planModel>til}" level="H4"/>
-                                        </HBox>
-                                        
-                                        <core:HTML content='&lt;hr style="border: 0; border-top: 1px dashed #d9d9d9; margin: 0.5rem 0;" /&gt;'/>
-
-                                        <VBox class="sapUiSmallMarginTop">
-                                            <VBox visible="{= ${planModel>stationer}.length > 0 }">
-                                                <Label text="Stationer" design="Bold" class="sapUiTinyMarginBottom"/>
-                                                <FlexBox wrap="Wrap" items="{path: 'planModel>stationer', templateShareable: false}">
-                                                    <GenericTag text="{planModel>navn}" class="sapUiTinyMargin"/>
-                                                </FlexBox>
-                                            </VBox>
-                                            
-                                            <VBox visible="{= ${planModel>mellemStationer}.length > 0 }" class="sapUiSmallMarginTop">
-                                                <Label text="Mellem Stationer" design="Bold" class="sapUiTinyMarginBottom"/>
-                                                <VBox items="{path: 'planModel>mellemStationer', templateShareable: false}">
-                                                    <Panel backgroundDesign="Transparent" class="sapUiNoContentPadding">
-                                                        <HBox alignItems="Center">
-                                                            <Text text="{planModel>fra}"/>
-                                                            <core:HTML content='&lt;div style="flex-grow: 1; border-bottom: 1px dashed #888; margin: 0 0.5rem;"&gt;&lt;/div&gt;'/>
-                                                            <Text text="{planModel>til}"/>
-                                                        </HBox>
-                                                    </Panel>
-                                                </VBox>
-                                            </VBox>
-                                            
-                                            <Text
-                                                text="Ingen stationer eller mellem stationer valgt for denne strækning."
-                                                visible="{= !${planModel>stationer}.length &amp;&amp; !${planModel>mellemStationer}.length }"
-                                                class="sapUiItalicElement"/>
+                                <VBox class="sapUiSmallMargin sapBackgroundColorNeutral sapUiTinyMarginBottom">
+                                    
+                                    <HBox alignItems="Center" class="sapUiSmallMarginBegin sapUiTinyMarginTopBottom">
+                                        <Label text="Strækning" design="Bold" class="sapUiMediumMarginEnd"/>
+                                        <Title text="{fra}" level="H4"/>
+                                        <core:Icon src="sap-icon://arrow-right" class="sapUiTinyMarginBeginEnd"/>
+                                        <Title text="{til}" level="H4"/>
+                                    </HBox>
+                                    
+                                    <core:HTML content='&lt;hr style="border: 0; border-top: 1px dashed #d9d9d9; margin: 0.5rem 0;" /&gt;'/>
+                                    
+                                    <VBox class="sapUiSmallMarginBegin sapUiSmallMarginBottom">
+                                        <VBox visible="{= ${stationer}.length > 0 }">
+                                            <Label text="Stationer" design="Bold" class="sapUiTinyMarginBottom"/>
+                                            <FlexBox wrap="Wrap" items="{path: 'stationer', templateShareable: false}">
+                                                <GenericTag text="{navn}" class="sapUiTinyMargin"/>
+                                            </FlexBox>
                                         </VBox>
+                                        
+                                        <VBox visible="{= ${mellemStationer}.length > 0 }" class="sapUiSmallMarginTop">
+                                            <Label text="Mellem Stationer" design="Bold" class="sapUiTinyMarginBottom"/>
+                                            <VBox items="{path: 'mellemStationer', templateShareable: false}">
+                                                <Panel backgroundDesign="Transparent" class="sapUiNoContentPadding">
+                                                    <HBox alignItems="Center">
+                                                        <Text text="{fra}"/>
+                                                        <core:HTML content='&lt;div style="flex-grow: 1; border-bottom: 1px dashed #888; margin: 0 0.5rem;"&gt;&lt;/div&gt;'/>
+                                                        <Text text="{til}"/>
+                                                    </HBox>
+                                                </Panel>
+                                            </VBox>
+                                        </VBox>
+                                        
+                                        <Text
+                                            text="Ingen stationer eller mellem stationer valgt."
+                                            visible="{= !${stationer}.length &amp;&amp; !${mellemStationer}.length }"
+                                            class="sapUiItalicElement sapUiTinyMarginTop"/>
                                     </VBox>
-                                </Panel>
+                                </VBox>
                             </CustomListItem>
                         </List>
                     </content>
